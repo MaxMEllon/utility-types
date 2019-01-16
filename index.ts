@@ -46,3 +46,16 @@ export type Nullable<T> = { [P in keyof T]: T[P] | null }
  * }
  */
 export type Partial<T> = { [P in keyof T]?: T[P] }
+
+/**
+ * drop `readonly` modifier
+ *
+ * @example
+ * type User = Readonly<{
+ *    name: string
+ *    age: number
+ * }>
+ *
+ * type MutableUser = NotReadonly<User>
+ */
+export type NotReadonly<T> = { -readonly [P in keyof T]: T[P] }
