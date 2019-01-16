@@ -4,8 +4,8 @@
  * @typeparam F - typeof async function
  * @example
  *
- * const plusOne = async (a: number) => a + 1
- * type Response = AsyncFunctionReturnType<typeof plusOne>
+ * const plusOneAsync = async (a: number) => a + 1
+ * type Response = AsyncFunctionReturnType<typeof plusOneAsync>
  *      // => number
  */
 export type AsyncFunctionReturnType<F> = F extends () => Promise<infer R> ? R : never
