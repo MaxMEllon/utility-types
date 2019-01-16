@@ -60,6 +60,21 @@ export type Partial<T extends object> = { [P in keyof T]?: T[P] }
  */
 export type NotReadonly<T> = { -readonly [P in keyof T]: T[P] }
 
+/**
+ * @example
+ *
+ * type Props = {
+ *    a: number
+ *    b: number
+ *    c: number
+ * }
+ *
+ * function AnyComponent({ a, ...props }: { a: Pick<Props, 'a'>, props: Rest<Props, 'a'> }) {
+ *   ...
+ * }
+ */
+export type Rest<T, K> = Pick<T, Exclude<keyof T, K>>
+
 /// flow aliases
 // See: https://flow.org/en/docs/types/utilities/
 export type $Keys<T> = keyof T
@@ -69,3 +84,5 @@ export type $Diff<U, T> = T extends U ? never : T;
 export type $Rest<T, K> = Pick<T, Exclude<keyof T, keyof K>>
 export type $PropertyType<T, k extends keyof T> = T[k]
 export type $Shape<T> = { [P in keyof T]?: T[P] }
+
+type b = $Rest<{ a: any, b: any, c: any}, {a: any, b: any}>
