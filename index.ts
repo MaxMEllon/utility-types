@@ -4,8 +4,8 @@
  * @typeparam F - typeof async function
  * @example
  *
- * const plusOne = async (a: number) => a + 1
- * type Response = AsyncFunctionReturnType<typeof plusOne>
+ * const plusOneAsync = async (a: number) => a + 1
+ * type Response = AsyncFunctionReturnType<typeof plusOneAsync>
  *      // => number
  */
 export type AsyncFunctionReturnType<F> = F extends () => Promise<infer R> ? R : never
@@ -84,5 +84,3 @@ export type $Diff<U, T> = T extends U ? never : T;
 export type $Rest<T, K> = Pick<T, Exclude<keyof T, keyof K>>
 export type $PropertyType<T, k extends keyof T> = T[k]
 export type $Shape<T> = { [P in keyof T]?: T[P] }
-
-type b = $Rest<{ a: any, b: any, c: any}, {a: any, b: any}>
