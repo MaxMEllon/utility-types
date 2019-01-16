@@ -34,7 +34,7 @@ export type PromiseResolveType<P> = P extends Promise<infer R> ? R : never
  *    right: Tree<T>
  * }>
  */
-export type Nullable<T> = { [P in keyof T]: T[P] | null }
+export type Nullable<T extends object> = { [P in keyof T]: T[P] | null }
 
 /**
  * @example
@@ -45,7 +45,7 @@ export type Nullable<T> = { [P in keyof T]: T[P] | null }
  *    right: Tree<T>
  * }
  */
-export type Partial<T> = { [P in keyof T]?: T[P] }
+export type Partial<T extends object> = { [P in keyof T]?: T[P] }
 
 /**
  * drop `readonly` modifier
@@ -59,3 +59,13 @@ export type Partial<T> = { [P in keyof T]?: T[P] }
  * type MutableUser = NotReadonly<User>
  */
 export type NotReadonly<T> = { -readonly [P in keyof T]: T[P] }
+
+/// flow aliases
+// See: https://flow.org/en/docs/types/utilities/
+export type $Keys<T> = keyof T
+export type $Call<T extends (...args: any[]) => any> = ReturnType<T>
+export type $Readonly<T> = Readonly<T>
+export type $Diff<U, T> = T extends U ? never : T;
+export type $Rest<T, K> = Pick<T, Exclude<keyof T, keyof K>>
+export type $PropertyType<T, k extends keyof T> = T[k]
+export type $Shape<T> = { [P in keyof T]?: T[P] }
