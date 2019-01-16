@@ -1,0 +1,11 @@
+{
+  "name": "utility-types",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "ssh://git@github.com/MaxMEllon/utility-types.git",
+  "author": "MaxMEllon <maxmellon1994@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^3.2.2"
+  }
+}
